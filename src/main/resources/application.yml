@@ -1,0 +1,18 @@
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+server:
+  port: 8088
+
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    name: my-blog-datasource
+    password: 123456
+    url: jdbc:mysql://localhost:3306/my_blog_db?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+    username: root
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
