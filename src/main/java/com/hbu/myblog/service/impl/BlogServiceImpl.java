@@ -128,7 +128,7 @@ public class BlogServiceImpl implements BlogService {
             return "数据不存在";
         }
         blogForUpdate.setBlogTitle(blog.getBlogTitle());
-        blogForUpdate.setBlogSubUrl(blog.getBlogSubUrl());
+        blogForUpdate.setBlogSummary(blog.getBlogSummary());
         blogForUpdate.setBlogContent(blog.getBlogContent());
         blogForUpdate.setBlogCoverImage(blog.getBlogCoverImage());
         blogForUpdate.setBlogStatus(blog.getBlogStatus());

@@ -16,7 +16,7 @@ public class BlogListVO implements Serializable {
 
     private String blogTitle;
 
-    private String blogSubUrl;
+    private String blogSummary;
 
     private String blogCoverImage;
 

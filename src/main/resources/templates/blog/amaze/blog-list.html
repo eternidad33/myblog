@@ -36,7 +36,10 @@
                             </h1>
                             <div class="post-content-preview article-body">
                                 <a th:href="@{'/blog/' + ${blog.blogId}}">
-                                    <img th:src="@{${blog.blogCoverImage}}" alt=""></a>
+                                    <p th:text="${blog.blogSummary}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa, dicta, dolorem dolores et id illo ipsam iure molestiae nam nulla perspiciatis porro quam quas reiciendis sapiente soluta vero, voluptates!
+                                    </p>
+<!--                                    <img th:src="@{${blog.blogCoverImage}}" alt="">-->
+                                </a>
                             </div>
                             <div class="clearfix topic-footer">
                                 <span class="pull-left time mobile_time">2021-02</span>

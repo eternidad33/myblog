@@ -21,19 +21,19 @@ public class ConfigServiceImpl implements ConfigService {
     @Autowired
     private BlogConfigMapper configMapper;
 
-    public static final String websiteName = "personal blog";
-    public static final String websiteDescription = "personal blog是SpringBoot2+Thymeleaf+Mybatis建造的个人博客网站.SpringBoot实战博客源码.个人博客搭建";
+    public static final String websiteName = "MyBlog";
+    public static final String websiteDescription = "MyBlog是SpringBoot2+Thymeleaf+Mybatis建造的个人博客网站";
     public static final String websiteLogo = "/admin/dist/img/logo2.png";
     public static final String websiteIcon = "/admin/dist/img/favicon.png";
 
-    public static final String yourAvatar = "/admin/dist/img/13.png";
-    public static final String yourEmail = "2449207463@qq.com";
-    public static final String yourName = "十三";
+    public static final String yourAvatar = "/admin/dist/img/f.jpg";
+    public static final String yourEmail = "3496655347@qq.com";
+    public static final String yourName = "vigilr";
 
     public static final String footerAbout = "your personal blog. have fun.";
-    public static final String footerICP = "浙ICP备 xxxxxx-x号";
+    public static final String footerICP = "冀ICP备66666666号-2";
     public static final String footerCopyRight = "@2018 十三";
-    public static final String footerPoweredBy = "personal blog";
+    public static final String footerPoweredBy = "myblog";
     public static final String footerPoweredByURL = "##";
 
     @Override

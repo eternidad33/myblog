@@ -2,7 +2,6 @@ package com.hbu.myblog.controller.blog;
 
 import com.hbu.myblog.entity.vo.BlogDetailVO;
 import com.hbu.myblog.entity.BlogComment;
-import com.hbu.myblog.entity.BlogLink;
 import com.hbu.myblog.service.*;
 import com.hbu.myblog.util.*;
 import org.springframework.stereotype.Controller;
@@ -27,8 +26,6 @@ public class MyblogController {
     @Resource
     private TagService tagService;
     @Resource
-    private LinkService linkService;
-    @Resource
     private CommentService commentService;
     @Resource
     private ConfigService configService;
@@ -37,8 +34,6 @@ public class MyblogController {
 
     /**
      * 首页
-     *
-     * @return
      */
     @GetMapping({"/", "/index", "index.html"})
     public String index(HttpServletRequest request) {
@@ -46,9 +41,7 @@ public class MyblogController {
     }
 
     /**
-     * 首页 分页数据
-     *
-     * @return
+     * 首页（带页码）
      */
     @GetMapping({"/page/{pageNum}"})
     public String page(HttpServletRequest request, @PathVariable("pageNum") int pageNum) {
@@ -79,8 +72,6 @@ public class MyblogController {
 
     /**
      * 详情页
-     *
-     * @return
      */
     @GetMapping({"/blog/{blogId}", "/article/{blogId}"})
     public String detail(HttpServletRequest request, @PathVariable("blogId") Long blogId, @RequestParam(value = "commentPage", required = false, defaultValue = "1") Integer commentPage) {
@@ -96,8 +87,6 @@ public class MyblogController {
 
     /**
      * 标签列表页
-     *
-     * @return
      */
     @GetMapping({"/tag/{tagName}"})
     public String tag(HttpServletRequest request, @PathVariable("tagName") String tagName) {
@@ -105,9 +94,7 @@ public class MyblogController {
     }
 
     /**
-     * 标签列表页
-     *
-     * @return
+     * 标签列表页（带页码）
      */
     @GetMapping({"/tag/{tagName}/{page}"})
     public String tag(HttpServletRequest request, @PathVariable("tagName") String tagName, @PathVariable("page") Integer page) {
@@ -125,8 +112,6 @@ public class MyblogController {
 
     /**
      * 分类列表页
-     *
-     * @return
      */
     @GetMapping({"/category/{categoryName}"})
     public String category(HttpServletRequest request, @PathVariable("categoryName") String categoryName) {
@@ -134,9 +119,7 @@ public class MyblogController {
     }
 
     /**
-     * 分类列表页
-     *
-     * @return
+     * 分类列表页（带页码）
      */
     @GetMapping({"/category/{categoryName}/{page}"})
     public String category(HttpServletRequest request, @PathVariable("categoryName") String categoryName, @PathVariable("page") Integer page) {
@@ -154,8 +137,6 @@ public class MyblogController {
 
     /**
      * 搜索列表页
-     *
-     * @return
      */
     @GetMapping({"/search/{keyword}"})
     public String search(HttpServletRequest request, @PathVariable("keyword") String keyword) {
@@ -163,9 +144,7 @@ public class MyblogController {
     }
 
     /**
-     * 搜索列表页
-     *
-     * @return
+     * 搜索列表页（带页码）
      */
     @GetMapping({"/search/{keyword}/{page}"})
     public String search(HttpServletRequest request, @PathVariable("keyword") String keyword, @PathVariable("page") Integer page) {
@@ -182,30 +161,7 @@ public class MyblogController {
     }
 
 
-    /**
-     * 友情链接页
-     *
-     * @return
-     */
-    @GetMapping({"/link"})
-    public String link(HttpServletRequest request) {
-        request.setAttribute("pageName", "友情链接");
-        Map<Byte, List<BlogLink>> linkMap = linkService.getLinksForLinkPage();
-        if (linkMap != null) {
-            //判断友链类别并封装数据 0-友链 1-推荐 2-个人网站
-            if (linkMap.containsKey((byte) 0)) {
-                request.setAttribute("favoriteLinks", linkMap.get((byte) 0));
-            }
-            if (linkMap.containsKey((byte) 1)) {
-                request.setAttribute("recommendLinks", linkMap.get((byte) 1));
-            }
-            if (linkMap.containsKey((byte) 2)) {
-                request.setAttribute("personalLinks", linkMap.get((byte) 2));
-            }
-        }
-        request.setAttribute("configurations", configService.getAllConfigs());
-        return "blog/" + theme + "/link";
-    }
+
 
     /**
      * 评论操作

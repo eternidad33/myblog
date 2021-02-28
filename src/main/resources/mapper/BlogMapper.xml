@@ -4,7 +4,7 @@
     <resultMap id="BaseResultMap" type="com.hbu.myblog.entity.Blog">
         <id column="blog_id" jdbcType="BIGINT" property="blogId"/>
         <result column="blog_title" jdbcType="VARCHAR" property="blogTitle"/>
-        <result column="blog_sub_url" jdbcType="VARCHAR" property="blogSubUrl"/>
+        <result column="blog_summary" jdbcType="VARCHAR" property="blogSummary"/>
         <result column="blog_cover_image" jdbcType="VARCHAR" property="blogCoverImage"/>
         <result column="blog_category_id" jdbcType="INTEGER" property="blogCategoryId"/>
         <result column="blog_category_name" jdbcType="VARCHAR" property="blogCategoryName"/>
@@ -20,7 +20,7 @@
         <result column="blog_content" jdbcType="LONGVARCHAR" property="blogContent"/>
     </resultMap>
     <sql id="Base_Column_List">
-        blog_id, blog_title, blog_sub_url, blog_cover_image, blog_category_id, blog_category_name,
+        blog_id, blog_title, blog_summary, blog_cover_image, blog_category_id, blog_category_name,
         blog_tags, blog_status, blog_views, enable_comment, is_deleted, create_time, update_time
     </sql>
     <sql id="Blob_Column_List">
@@ -106,7 +106,7 @@
         ,
         <include refid="Blob_Column_List"/>
         from tb_blog
-        where blog_sub_url = #{subUrl,jdbcType=VARCHAR} and is_deleted = 0 limit 1
+        where blog_summary = #{subUrl,jdbcType=VARCHAR} and is_deleted = 0 limit 1
     </select>
 
     <update id="deleteByPrimaryKey" parameterType="java.lang.Long">
@@ -121,12 +121,12 @@
         </foreach>
     </update>
     <insert id="insert" parameterType="com.hbu.myblog.entity.Blog">
-        insert into tb_blog (blog_id, blog_title, blog_sub_url,
+        insert into tb_blog (blog_id, blog_title, blog_summary,
         blog_cover_image, blog_category_id, blog_category_name,
         blog_tags, blog_status, blog_views,
         enable_comment, is_deleted, create_time,
         update_time, blog_content)
-        values (#{blogId,jdbcType=BIGINT}, #{blogTitle,jdbcType=VARCHAR}, #{blogSubUrl,jdbcType=VARCHAR},
+        values (#{blogId,jdbcType=BIGINT}, #{blogTitle,jdbcType=VARCHAR}, #{blogSummary,jdbcType=VARCHAR},
         #{blogCoverImage,jdbcType=VARCHAR}, #{blogCategoryId,jdbcType=INTEGER}, #{blogCategoryName,jdbcType=VARCHAR},
         #{blogTags,jdbcType=VARCHAR}, #{blogStatus,jdbcType=TINYINT}, #{blogViews,jdbcType=BIGINT},
         #{enableComment,jdbcType=TINYINT}, #{isDeleted,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP},
@@ -142,8 +142,8 @@
             <if test="blogTitle != null">
                 blog_title,
             </if>
-            <if test="blogSubUrl != null">
-                blog_sub_url,
+            <if test="blogSummary != null">
+                blog_summary,
             </if>
             <if test="blogCoverImage != null">
                 blog_cover_image,
@@ -186,8 +186,8 @@
             <if test="blogTitle != null">
                 #{blogTitle,jdbcType=VARCHAR},
             </if>
-            <if test="blogSubUrl != null">
-                #{blogSubUrl,jdbcType=VARCHAR},
+            <if test="blogSummary != null">
+                #{blogSummary,jdbcType=VARCHAR},
             </if>
             <if test="blogCoverImage != null">
                 #{blogCoverImage,jdbcType=VARCHAR},
@@ -230,8 +230,8 @@
             <if test="blogTitle != null">
                 blog_title = #{blogTitle,jdbcType=VARCHAR},
             </if>
-            <if test="blogSubUrl != null">
-                blog_sub_url = #{blogSubUrl,jdbcType=VARCHAR},
+            <if test="blogSummary != null">
+                blog_summary = #{blogSummary,jdbcType=VARCHAR},
             </if>
             <if test="blogCoverImage != null">
                 blog_cover_image = #{blogCoverImage,jdbcType=VARCHAR},
@@ -275,7 +275,7 @@
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hbu.myblog.entity.Blog">
         update tb_blog
         set blog_title = #{blogTitle,jdbcType=VARCHAR},
-        blog_sub_url = #{blogSubUrl,jdbcType=VARCHAR},
+        blog_summary = #{blogSummary,jdbcType=VARCHAR},
         blog_cover_image = #{blogCoverImage,jdbcType=VARCHAR},
         blog_category_id = #{blogCategoryId,jdbcType=INTEGER},
         blog_category_name = #{blogCategoryName,jdbcType=VARCHAR},
@@ -292,7 +292,7 @@
     <update id="updateByPrimaryKey" parameterType="com.hbu.myblog.entity.Blog">
         update tb_blog
         set blog_title = #{blogTitle,jdbcType=VARCHAR},
-        blog_sub_url = #{blogSubUrl,jdbcType=VARCHAR},
+        blog_summary = #{blogSummary,jdbcType=VARCHAR},
         blog_cover_image = #{blogCoverImage,jdbcType=VARCHAR},
         blog_category_id = #{blogCategoryId,jdbcType=INTEGER},
         blog_category_name = #{blogCategoryName,jdbcType=VARCHAR},

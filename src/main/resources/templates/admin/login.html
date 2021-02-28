@@ -33,12 +33,12 @@
 </div>
 <div class="login-box">
     <div class="login-logo" style="color: #007bff;">
-        <h1>personal blog</h1>
+        <h1>MyBlog</h1>
     </div>
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">your personal blog , enjoy it</p>
+            <p class="login-box-msg">管理员登录</p>
             <form th:action="@{/admin/login}" method="post">
                 <div th:if="${not #strings.isEmpty(session.errorMsg)}" class="form-group">
                     <div class="alert alert-danger" th:text="${session.errorMsg}"></div>

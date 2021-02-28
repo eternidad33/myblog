@@ -83,7 +83,7 @@ $(function () {
 
 $('#confirmButton').click(function () {
     var blogTitle = $('#blogName').val();
-    var blogSubUrl = $('#blogSubUrl').val();
+    var blogSummary = $('#blogSummary').val();
     var blogCategoryId = $('#blogCategoryId').val();
     var blogTags = $('#blogTags').val();
     var blogContent = blogEditor.getMarkdown();
@@ -99,8 +99,8 @@ $('#confirmButton').click(function () {
         });
         return;
     }
-    if (!validLength(blogSubUrl, 150)) {
-        swal("路径过长", {
+    if (!validLength(blogSummary, 375)) {
+        swal("摘要过长", {
             icon: "error",
         });
         return;
@@ -141,7 +141,7 @@ $('#confirmButton').click(function () {
 $('#saveButton').click(function () {
     var blogId = $('#blogId').val();
     var blogTitle = $('#blogName').val();
-    var blogSubUrl = $('#blogSubUrl').val();
+    var blogSummary = $('#blogSummary').val();
     var blogCategoryId = $('#blogCategoryId').val();
     var blogTags = $('#blogTags').val();
     var blogContent = blogEditor.getMarkdown();
@@ -157,7 +157,7 @@ $('#saveButton').click(function () {
     var url = '/admin/blogs/save';
     var swlMessage = '保存成功';
     var data = {
-        "blogTitle": blogTitle, "blogSubUrl": blogSubUrl, "blogCategoryId": blogCategoryId,
+        "blogTitle": blogTitle, "blogSummary": blogSummary, "blogCategoryId": blogCategoryId,
         "blogTags": blogTags, "blogContent": blogContent, "blogCoverImage": blogCoverImage, "blogStatus": blogStatus,
         "enableComment": enableComment
     };
@@ -167,7 +167,7 @@ $('#saveButton').click(function () {
         data = {
             "blogId": blogId,
             "blogTitle": blogTitle,
-            "blogSubUrl": blogSubUrl,
+            "blogSummary": blogSummary,
             "blogCategoryId": blogCategoryId,
             "blogTags": blogTags,
             "blogContent": blogContent,

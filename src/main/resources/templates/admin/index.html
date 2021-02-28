@@ -42,7 +42,6 @@
                         <div class="small-box bg-success">
                             <div class="inner">
                                 <h3 th:text="${blogCount}">65</h3>
-
                                 <p>总文章数</p>
                             </div>
                             <div class="icon">
@@ -58,7 +57,6 @@
                         <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3 th:text="${commentCount}">65</h3>
-
                                 <p>收到评论数</p>
                             </div>
                             <div class="icon">
@@ -90,7 +88,6 @@
                         <div class="small-box bg-danger">
                             <div class="inner">
                                 <h3 th:text="${tagCount}">65</h3>
-
                                 <p>标签总量</p>
                             </div>
                             <div class="icon">
@@ -101,24 +98,9 @@
                         </div>
                     </div>
                     <!-- ./col -->
-                    <div class="col-lg-4 col-6">
-                        <!-- small box -->
-                        <div class="small-box bg-dark">
-                            <div class="inner">
-                                <h3 th:text="${linkCount}">65</h3>
-
-                                <p>友情链接</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fa fa-heart"></i>
-                            </div>
-                            <a th:href="@{/admin/links}" class="small-box-footer">More info <i
-                                    class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <!-- ./col -->
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.container-fluid -->
         </div>
         <!-- /.content -->
     </div>
