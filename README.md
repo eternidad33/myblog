@@ -2,9 +2,8 @@
 
 ## 简介
 
-本博客系统是在 github 大佬[十三](https://github.com/ZHENFENG13) 写的[My-Blog-layui](https://github.com/ZHENFENG13/My-Blog-layui) 的基础上进行的微小的改动
-
-用到的技术：**SpringBoot** + **mysql** + **thymleaf** + **mybatis**
+> 本博客系统是在 github 大佬[十三](https://github.com/ZHENFENG13) 写的 [My-Blog-layui](https://github.com/ZHENFENG13/My-Blog-layui) 的基础上进行的微小的改动
+> 用到的技术：**SpringBoot** + **mysql** + **thymleaf** + **mybatis**
 
 **项目结构**
 
