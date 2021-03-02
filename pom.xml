@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.hbu</groupId>
     <artifactId>myblog</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>myblog</name>
     <description>基于SpringBoot的简单博客</description>
     <properties>
