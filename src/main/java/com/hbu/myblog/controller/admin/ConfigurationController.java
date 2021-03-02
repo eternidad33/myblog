@@ -21,6 +21,10 @@ public class ConfigurationController {
     @Resource
     private ConfigService configService;
 
+    /**
+     * @param request
+     * @return java.lang.String
+     */
     @GetMapping("/configurations")
     public String list(HttpServletRequest request) {
         request.setAttribute("path", "configurations");
@@ -28,6 +32,13 @@ public class ConfigurationController {
         return "admin/configuration";
     }
 
+    /**
+     * @param websiteName
+     * @param websiteDescription
+     * @param websiteLogo
+     * @param websiteIcon
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/configurations/website")
     @ResponseBody
     public Result website(@RequestParam(value = "websiteName", required = false) String websiteName,
@@ -50,6 +61,12 @@ public class ConfigurationController {
         return ResultGenerator.genSuccessResult(updateResult > 0);
     }
 
+    /**
+     * @param yourAvatar
+     * @param yourName
+     * @param yourEmail
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/configurations/userInfo")
     @ResponseBody
     public Result userInfo(@RequestParam(value = "yourAvatar", required = false) String yourAvatar,
@@ -68,6 +85,14 @@ public class ConfigurationController {
         return ResultGenerator.genSuccessResult(updateResult > 0);
     }
 
+    /**
+     * @param footerAbout
+     * @param footerICP
+     * @param footerCopyRight
+     * @param footerPoweredBy
+     * @param footerPoweredByURL
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/configurations/footer")
     @ResponseBody
     public Result footer(@RequestParam(value = "footerAbout", required = false) String footerAbout,

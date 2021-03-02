@@ -23,6 +23,10 @@ public class CommentController {
     @Resource
     private CommentService commentService;
 
+    /**
+     * @param params
+     * @return com.hbu.myblog.util.Result
+     */
     @GetMapping("/comments/list")
     @ResponseBody
     public Result list(@RequestParam Map<String, Object> params) {
@@ -33,6 +37,10 @@ public class CommentController {
         return ResultGenerator.genSuccessResult(commentService.getCommentsPage(pageUtil));
     }
 
+    /**
+     * @param ids
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/comments/checkDone")
     @ResponseBody
     public Result checkDone(@RequestBody Integer[] ids) {
@@ -46,6 +54,11 @@ public class CommentController {
         }
     }
 
+    /**
+     * @param commentId
+     * @param replyBody
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/comments/reply")
     @ResponseBody
     public Result checkDone(@RequestParam("commentId") Long commentId,
@@ -60,6 +73,10 @@ public class CommentController {
         }
     }
 
+    /**
+     * @param ids
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/comments/delete")
     @ResponseBody
     public Result delete(@RequestBody Integer[] ids) {
@@ -73,6 +90,10 @@ public class CommentController {
         }
     }
 
+    /**
+     * @param request
+     * @return java.lang.String
+     */
     @GetMapping("/comments")
     public String list(HttpServletRequest request) {
         request.setAttribute("path", "comments");

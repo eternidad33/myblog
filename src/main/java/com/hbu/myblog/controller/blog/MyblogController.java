@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author vigilr
@@ -35,6 +33,9 @@ public class MyblogController {
 
     /**
      * 首页
+     *
+     * @param request http请求
+     * @return java.lang.String
      */
     @GetMapping({"/", "/index", "index.html"})
     public String index(HttpServletRequest request) {
@@ -43,6 +44,10 @@ public class MyblogController {
 
     /**
      * 首页（带页码）
+     *
+     * @param request http请求
+     * @param pageNum 页码
+     * @return java.lang.String
      */
     @GetMapping({"/page/{pageNum}"})
     public String page(HttpServletRequest request, @PathVariable("pageNum") int pageNum) {
@@ -61,6 +66,9 @@ public class MyblogController {
 
     /**
      * Categories页面(包括分类数据和标签数据)
+     *
+     * @param request http请求
+     * @return java.lang.String
      */
     @GetMapping({"/categories"})
     public String categories(HttpServletRequest request) {
@@ -73,6 +81,11 @@ public class MyblogController {
 
     /**
      * 详情页
+     *
+     * @param request     http请求
+     * @param blogId      博客id
+     * @param commentPage 评论页
+     * @return java.lang.String
      */
     @GetMapping({"/blog/{blogId}", "/article/{blogId}"})
     public String detail(HttpServletRequest request, @PathVariable("blogId") Long blogId, @RequestParam(value = "commentPage", required = false, defaultValue = "1") Integer commentPage) {
@@ -88,6 +101,10 @@ public class MyblogController {
 
     /**
      * 标签列表页
+     *
+     * @param request http请求
+     * @param tagName 标签名称
+     * @return java.lang.String
      */
     @GetMapping({"/tag/{tagName}"})
     public String tag(HttpServletRequest request, @PathVariable("tagName") String tagName) {
@@ -96,6 +113,11 @@ public class MyblogController {
 
     /**
      * 标签列表页（带页码）
+     *
+     * @param request http请求
+     * @param tagName 标签名称
+     * @param page    页码
+     * @return java.lang.String
      */
     @GetMapping({"/tag/{tagName}/{page}"})
     public String tag(HttpServletRequest request, @PathVariable("tagName") String tagName, @PathVariable("page") Integer page) {
@@ -113,6 +135,10 @@ public class MyblogController {
 
     /**
      * 分类列表页
+     *
+     * @param request      http请求
+     * @param categoryName 类别名称
+     * @return java.lang.String
      */
     @GetMapping({"/category/{categoryName}"})
     public String category(HttpServletRequest request, @PathVariable("categoryName") String categoryName) {
@@ -121,6 +147,11 @@ public class MyblogController {
 
     /**
      * 分类列表页（带页码）
+     *
+     * @param request      http请求
+     * @param categoryName 类别名称
+     * @param page         页码
+     * @return java.lang.String
      */
     @GetMapping({"/category/{categoryName}/{page}"})
     public String category(HttpServletRequest request, @PathVariable("categoryName") String categoryName, @PathVariable("page") Integer page) {
@@ -138,6 +169,10 @@ public class MyblogController {
 
     /**
      * 搜索列表页
+     *
+     * @param request http请求
+     * @param keyword 关键词
+     * @return java.lang.String
      */
     @GetMapping({"/search/{keyword}"})
     public String search(HttpServletRequest request, @PathVariable("keyword") String keyword) {
@@ -146,6 +181,11 @@ public class MyblogController {
 
     /**
      * 搜索列表页（带页码）
+     *
+     * @param request http请求
+     * @param keyword 关键词
+     * @param page    页码
+     * @return java.lang.String
      */
     @GetMapping({"/search/{keyword}/{page}"})
     public String search(HttpServletRequest request, @PathVariable("keyword") String keyword, @PathVariable("page") Integer page) {
@@ -163,7 +203,17 @@ public class MyblogController {
 
 
     /**
-     * 评论操作
+     * 评论留言
+     *
+     * @param request     http请求
+     * @param session     session
+     * @param blogId      博客id
+     * @param verifyCode  验证码
+     * @param commentator 评论者昵称
+     * @param email       邮箱
+     * @param websiteUrl  留言者的网站
+     * @param commentBody 评论内容
+     * @return com.hbu.myblog.util.Result
      */
     @PostMapping(value = "/blog/comment")
     @ResponseBody
@@ -212,23 +262,5 @@ public class MyblogController {
         }
         comment.setCommentBody(MyBlogUtils.cleanString(commentBody));
         return ResultGenerator.genSuccessResult(commentService.addComment(comment));
-    }
-
-    /**
-     * 关于页面 以及其他配置了subUrl的文章页
-     *
-     * @return
-     */
-    @GetMapping({"/{subUrl}"})
-    public String detail(HttpServletRequest request, @PathVariable("subUrl") String subUrl) {
-        BlogDetailVO blogDetailVO = blogService.getBlogDetailBySubUrl(subUrl);
-        if (blogDetailVO != null) {
-            request.setAttribute("blogDetailVO", blogDetailVO);
-            request.setAttribute("pageName", subUrl);
-            request.setAttribute("configurations", configService.getAllConfigs());
-            return "blog/" + theme + "/detail";
-        } else {
-            return "error/error_400";
-        }
     }
 }

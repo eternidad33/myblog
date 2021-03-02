@@ -4,6 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * 正则判断字符串（工具类）
+ *
  * @author vigilr
  * @since 2021/02/24
  */
@@ -18,8 +20,8 @@ public class PatternUtil {
     /**
      * 验证只包含中英文和数字的字符串
      *
-     * @param keyword
-     * @return
+     * @param keyword 关键词
+     * @return java.lang.Boolean
      */
     public static Boolean validKeyword(String keyword) {
         String regex = "^[a-zA-Z0-9\u4E00-\u9FA5]+$";
@@ -28,12 +30,11 @@ public class PatternUtil {
         return match.matches();
     }
 
-
     /**
      * 判断是否是邮箱
      *
-     * @param emailStr
-     * @return
+     * @param emailStr 邮箱字符串
+     * @return boolean
      */
     public static boolean isEmail(String emailStr) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
@@ -43,8 +44,8 @@ public class PatternUtil {
     /**
      * 判断是否是网址
      *
-     * @param urlString
-     * @return
+     * @param urlString 要判断的字符串
+     * @return boolean
      */
     public static boolean isURL(String urlString) {
         String regex = "^([hH][tT]{2}[pP]:/*|[hH][tT]{2}[pP][sS]:/*|[fF][tT][pP]:/*)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\\/])+(\\?{0,1}(([A-Za-z0-9-~]+\\={0,1})([A-Za-z0-9-~]*)\\&{0,1})*)$";

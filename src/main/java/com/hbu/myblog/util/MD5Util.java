@@ -3,11 +3,19 @@ package com.hbu.myblog.util;
 import java.security.MessageDigest;
 
 /**
+ * MD5加密工具类
+ *
  * @author vigilr
  * @since 2021/02/25
  */
 public class MD5Util {
 
+    /**
+     * 将byte数组转为十六进制字符串
+     *
+     * @param b byte数组
+     * @return java.lang.String
+     */
     private static String byteArrayToHexString(byte b[]) {
         StringBuffer resultSb = new StringBuffer();
         for (int i = 0; i < b.length; i++) {
@@ -17,6 +25,12 @@ public class MD5Util {
         return resultSb.toString();
     }
 
+    /**
+     * 将byte的值转为十六进制字符串
+     *
+     * @param b 要转换的byte值
+     * @return java.lang.String
+     */
     private static String byteToHexString(byte b) {
         int n = b;
         if (n < 0) {
@@ -27,6 +41,13 @@ public class MD5Util {
         return HEX_DIGITS[d1] + HEX_DIGITS[d2];
     }
 
+    /**
+     * 加密
+     *
+     * @param origin  原始字符串
+     * @param charset 编码方式
+     * @return java.lang.String
+     */
     public static String MD5Encode(String origin, String charset) {
         String resultString = null;
         try {

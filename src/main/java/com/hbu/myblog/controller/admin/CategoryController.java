@@ -23,6 +23,10 @@ public class CategoryController {
     @Resource
     private CategoryService categoryService;
 
+    /**
+     * @param request
+     * @return java.lang.String
+     */
     @GetMapping("/categories")
     public String categoryPage(HttpServletRequest request) {
         request.setAttribute("path", "categories");
@@ -30,7 +34,8 @@ public class CategoryController {
     }
 
     /**
-     * 分类列表
+     * @param params
+     * @return com.hbu.myblog.util.Result
      */
     @RequestMapping(value = "/categories/list", method = RequestMethod.GET)
     @ResponseBody
@@ -43,7 +48,9 @@ public class CategoryController {
     }
 
     /**
-     * 分类添加
+     * @param categoryName
+     * @param categoryIcon
+     * @return com.hbu.myblog.util.Result
      */
     @RequestMapping(value = "/categories/save", method = RequestMethod.POST)
     @ResponseBody
@@ -64,7 +71,10 @@ public class CategoryController {
 
 
     /**
-     * 分类修改
+     * @param categoryId
+     * @param categoryName
+     * @param categoryIcon
+     * @return com.hbu.myblog.util.Result
      */
     @RequestMapping(value = "/categories/update", method = RequestMethod.POST)
     @ResponseBody
@@ -86,7 +96,8 @@ public class CategoryController {
 
 
     /**
-     * 分类删除
+     * @param ids
+     * @return com.hbu.myblog.util.Result
      */
     @RequestMapping(value = "/categories/delete", method = RequestMethod.POST)
     @ResponseBody

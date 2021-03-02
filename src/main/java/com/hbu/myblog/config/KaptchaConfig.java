@@ -8,14 +8,21 @@ import org.springframework.stereotype.Component;
 import java.util.Properties;
 
 /**
+ * 将验证码组件注入spring容器中
+ *
  * @author vigilr
  * @since 2021/02/25
  */
 @Component
 public class KaptchaConfig {
+    /**
+     * 获取验证码
+     *
+     * @return com.google.code.kaptcha.impl.DefaultKaptcha
+     */
     @Bean
     public DefaultKaptcha getDefaultKaptcha() {
-        DefaultKaptcha defaultKaptcha = new com.google.code.kaptcha.impl.DefaultKaptcha();
+        DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
         Properties properties = new Properties();
         properties.put("kaptcha.border", "no");
         properties.put("kaptcha.textproducer.font.color", "black");

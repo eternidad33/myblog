@@ -7,6 +7,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
+ * 实现 WebMvcConfigurer 接口
+ *
  * @author vigilr
  * @since 2021/02/25
  */
@@ -15,9 +17,16 @@ public class MyBlogWebMvcConfigurer implements WebMvcConfigurer {
     @Autowired
     private AdminLoginInterceptor adminLoginInterceptor;
 
+    /**
+     * 添加一个拦截器，拦截以 /admin 为前缀的url路径
+     *
+     * @param registry 拦截器
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // 添加一个拦截器，拦截以/admin为前缀的url路径
-        registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/admin/**").excludePathPatterns("/admin/login").excludePathPatterns("/admin/dist/**").excludePathPatterns("/admin/plugins/**");
+        registry.addInterceptor(adminLoginInterceptor).addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin/login")
+                .excludePathPatterns("/admin/dist/**")
+                .excludePathPatterns("/admin/plugins/**");
     }
 }

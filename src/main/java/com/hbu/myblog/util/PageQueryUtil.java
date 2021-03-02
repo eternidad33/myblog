@@ -1,16 +1,25 @@
 package com.hbu.myblog.util;
 
+import lombok.Data;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
+ * 分页工具类
+ *
  * @author vigilr
  * @since 2021/02/24
  */
+@Data
 public class PageQueryUtil extends LinkedHashMap<String, Object> {
-    //当前页码
+    /**
+     * 当前页码
+     */
     private int page;
-    //每页条数
+    /**
+     * 每页条数
+     */
     private int limit;
 
     public PageQueryUtil(Map<String, Object> params) {
@@ -22,30 +31,5 @@ public class PageQueryUtil extends LinkedHashMap<String, Object> {
         this.put("start", (page - 1) * limit);
         this.put("page", page);
         this.put("limit", limit);
-    }
-
-
-    public int getPage() {
-        return page;
-    }
-
-    public void setPage(int page) {
-        this.page = page;
-    }
-
-    public int getLimit() {
-        return limit;
-    }
-
-    public void setLimit(int limit) {
-        this.limit = limit;
-    }
-
-    @Override
-    public String toString() {
-        return "PageUtil{" +
-                "page=" + page +
-                ", limit=" + limit +
-                '}';
     }
 }

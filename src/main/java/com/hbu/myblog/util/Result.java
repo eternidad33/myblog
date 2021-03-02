@@ -1,11 +1,16 @@
 package com.hbu.myblog.util;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
+ * 返回结果
+ *
  * @author vigilr
  * @since 2021/02/24
  */
+@Data
 public class Result<T> implements Serializable {
     private static final long serialVersionUID = 1L;
     private int resultCode;
@@ -20,37 +25,6 @@ public class Result<T> implements Serializable {
         this.message = message;
     }
 
-    public int getResultCode() {
-        return resultCode;
-    }
 
-    public void setResultCode(int resultCode) {
-        this.resultCode = resultCode;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    @Override
-    public String toString() {
-        return "Result{" +
-                "resultCode=" + resultCode +
-                ", message='" + message + '\'' +
-                ", data=" + data +
-                '}';
-    }
 }
 

@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
+ * 处理管理员界面请求
+ *
  * @author vigilr
  * @since 2021/02/25
  */
@@ -30,11 +32,22 @@ public class AdminController {
     private CommentService commentService;
 
 
+    /**
+     * 处理登录请求
+     *
+     * @return java.lang.String
+     */
     @GetMapping({"/login"})
     public String login() {
         return "admin/login";
     }
 
+    /**
+     * 主页
+     *
+     * @param request http请求
+     * @return java.lang.String
+     */
     @GetMapping({"", "/", "/index", "/index.html"})
     public String index(HttpServletRequest request) {
         request.setAttribute("path", "index");
@@ -45,6 +58,15 @@ public class AdminController {
         return "admin/index";
     }
 
+    /**
+     * 登录界面
+     *
+     * @param userName   用户名
+     * @param password   密码
+     * @param verifyCode 验证码
+     * @param session    session
+     * @return java.lang.String
+     */
     @PostMapping(value = "/login")
     public String login(@RequestParam("userName") String userName,
                         @RequestParam("password") String password,
@@ -76,6 +98,12 @@ public class AdminController {
         }
     }
 
+    /**
+     * 修改个人信息
+     *
+     * @param request http请求
+     * @return java.lang.String
+     */
     @GetMapping("/profile")
     public String profile(HttpServletRequest request) {
         Integer loginUserId = (int) request.getSession().getAttribute("loginUserId");
@@ -89,6 +117,14 @@ public class AdminController {
         return "admin/profile";
     }
 
+    /**
+     * 修改密码
+     *
+     * @param request          http请求
+     * @param originalPassword 原始密码
+     * @param newPassword      新密码
+     * @return java.lang.String
+     */
     @PostMapping("/profile/password")
     @ResponseBody
     public String passwordUpdate(HttpServletRequest request, @RequestParam("originalPassword") String originalPassword,
@@ -108,6 +144,14 @@ public class AdminController {
         }
     }
 
+    /**
+     * 修改登录名，昵称
+     *
+     * @param request       http请求
+     * @param loginUserName 登录名
+     * @param nickName      昵称
+     * @return java.lang.String
+     */
     @PostMapping("/profile/name")
     @ResponseBody
     public String nameUpdate(HttpServletRequest request, @RequestParam("loginUserName") String loginUserName,
@@ -123,6 +167,12 @@ public class AdminController {
         }
     }
 
+    /**
+     * 管理员退出
+     *
+     * @param request http请求
+     * @return java.lang.String
+     */
     @GetMapping("/logout")
     public String logout(HttpServletRequest request) {
         request.getSession().removeAttribute("loginUserId");

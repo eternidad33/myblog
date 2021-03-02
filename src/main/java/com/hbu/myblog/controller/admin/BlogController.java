@@ -3,7 +3,6 @@ package com.hbu.myblog.controller.admin;
 import com.hbu.myblog.entity.Blog;
 import com.hbu.myblog.service.BlogService;
 import com.hbu.myblog.service.CategoryService;
-import com.hbu.myblog.util.MyBlogUtils;
 import com.hbu.myblog.util.PageQueryUtil;
 import com.hbu.myblog.util.Result;
 import com.hbu.myblog.util.ResultGenerator;
@@ -28,6 +27,12 @@ public class BlogController {
     @Resource
     private CategoryService categoryService;
 
+    /**
+     * 博客列表
+     *
+     * @param params 参数
+     * @return com.hbu.myblog.util.Result
+     */
     @GetMapping("/blogs/list")
     @ResponseBody
     public Result list(@RequestParam Map<String, Object> params) {
@@ -39,12 +44,20 @@ public class BlogController {
     }
 
 
+    /**
+     * @param request http请求
+     * @return java.lang.String
+     */
     @GetMapping("/blogs")
     public String list(HttpServletRequest request) {
         request.setAttribute("path", "blogs");
         return "admin/blog";
     }
 
+    /**
+     * @param request http请求
+     * @return java.lang.String
+     */
     @GetMapping("/blogs/edit")
     public String edit(HttpServletRequest request) {
         request.setAttribute("path", "edit");
@@ -52,6 +65,11 @@ public class BlogController {
         return "admin/edit";
     }
 
+    /**
+     * @param request http请求
+     * @param blogId  博客id
+     * @return java.lang.String
+     */
     @GetMapping("/blogs/edit/{blogId}")
     public String edit(HttpServletRequest request, @PathVariable("blogId") Long blogId) {
         request.setAttribute("path", "edit");
@@ -64,6 +82,18 @@ public class BlogController {
         return "admin/edit";
     }
 
+    /**
+     * 添加文章
+     *
+     * @param blogTitle      文章标题
+     * @param blogSummary    摘要
+     * @param blogCategoryId 类别
+     * @param blogTags       标签
+     * @param blogContent    内容
+     * @param blogStatus     草稿，发布
+     * @param enableComment  可否评论
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/blogs/save")
     @ResponseBody
     public Result save(@RequestParam("blogTitle") String blogTitle,
@@ -110,6 +140,19 @@ public class BlogController {
         }
     }
 
+    /**
+     * 修改文章
+     *
+     * @param blogId         文章ID
+     * @param blogTitle      文章标题
+     * @param blogSummary    摘要
+     * @param blogCategoryId 类别
+     * @param blogTags       标签
+     * @param blogContent    内容
+     * @param blogStatus     草稿，发布
+     * @param enableComment  可否评论
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/blogs/update")
     @ResponseBody
     public Result update(@RequestParam("blogId") Long blogId,
@@ -159,6 +202,12 @@ public class BlogController {
     }
 
 
+    /**
+     * 根据id的之删除文章
+     *
+     * @param ids 要删除文章id列表
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/blogs/delete")
     @ResponseBody
     public Result delete(@RequestBody Integer[] ids) {

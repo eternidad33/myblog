@@ -23,12 +23,20 @@ public class TagController {
     @Resource
     private TagService tagService;
 
+    /**
+     * @param request
+     * @return java.lang.String
+     */
     @GetMapping("/tags")
     public String tagPage(HttpServletRequest request) {
         request.setAttribute("path", "tags");
         return "admin/tag";
     }
 
+    /**
+     * @param params
+     * @return com.hbu.myblog.util.Result
+     */
     @GetMapping("/tags/list")
     @ResponseBody
     public Result list(@RequestParam Map<String, Object> params) {
@@ -40,6 +48,10 @@ public class TagController {
     }
 
 
+    /**
+     * @param tagName
+     * @return com.hbu.myblog.util.Result
+     */
     @PostMapping("/tags/save")
     @ResponseBody
     public Result save(@RequestParam("tagName") String tagName) {

@@ -39,6 +39,10 @@ public class ErrorPageController implements ErrorController {
         }
     }
 
+    /**
+     * @param request
+     * @return org.springframework.web.servlet.ModelAndView
+     */
     @RequestMapping(value = ERROR_PATH, produces = "text/html")
     public ModelAndView errorHtml(HttpServletRequest request) {
         HttpStatus status = getStatus(request);
@@ -51,6 +55,10 @@ public class ErrorPageController implements ErrorController {
         }
     }
 
+    /**
+     * @param request
+     * @return org.springframework.http.ResponseEntity<java.util.Map < java.lang.String, java.lang.Object>>
+     */
     @RequestMapping(value = ERROR_PATH)
     @ResponseBody
     public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
@@ -59,12 +67,20 @@ public class ErrorPageController implements ErrorController {
         return new ResponseEntity<Map<String, Object>>(body, status);
     }
 
+    /**
+     * @param
+     * @return java.lang.String
+     */
     @Override
     public String getErrorPath() {
         return ERROR_PATH;
     }
 
 
+    /**
+     * @param request
+     * @return boolean
+     */
     private boolean getTraceParameter(HttpServletRequest request) {
         String parameter = request.getParameter("trace");
         if (parameter == null) {
@@ -73,11 +89,20 @@ public class ErrorPageController implements ErrorController {
         return !"false".equals(parameter.toLowerCase());
     }
 
+    /**
+     * @param request
+     * @param includeStackTrace
+     * @return java.util.Map<java.lang.String, java.lang.Object>
+     */
     protected Map<String, Object> getErrorAttributes(HttpServletRequest request, boolean includeStackTrace) {
         WebRequest webRequest = new ServletWebRequest(request);
         return this.errorAttributes.getErrorAttributes(webRequest, includeStackTrace);
     }
 
+    /**
+     * @param request
+     * @return org.springframework.http.HttpStatus
+     */
     private HttpStatus getStatus(HttpServletRequest request) {
         Integer statusCode = (Integer) request
                 .getAttribute("javax.servlet.error.status_code");

@@ -9,11 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 拦截器
+ *
  * @author vigilr
  * @since 2021/02/25
  */
 @Component
 public class AdminLoginInterceptor implements HandlerInterceptor {
+    /**
+     * @param request
+     * @param response
+     * @param handler
+     * @return boolean
+     */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String uri = request.getRequestURI();
