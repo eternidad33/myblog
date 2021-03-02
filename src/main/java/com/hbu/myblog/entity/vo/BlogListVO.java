@@ -18,8 +18,6 @@ public class BlogListVO implements Serializable {
 
     private String blogSummary;
 
-    private String blogCoverImage;
-
     private Integer blogCategoryId;
 
     private String blogCategoryIcon;

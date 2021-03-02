@@ -14,7 +14,6 @@ public class Blog {
     private Long blogId;
     private String blogTitle;
     private String blogSummary;
-    private String blogCoverImage;
     private Integer blogCategoryId;
     private String blogCategoryName;
     private String blogTags;

@@ -20,6 +20,7 @@ import java.util.Map;
  */
 @Controller
 public class MyblogController {
+    //    public static String theme = "default";
     public static String theme = "amaze";
     @Resource
     private BlogService blogService;
@@ -159,8 +160,6 @@ public class MyblogController {
         request.setAttribute("configurations", configService.getAllConfigs());
         return "blog/" + theme + "/list";
     }
-
-
 
 
     /**

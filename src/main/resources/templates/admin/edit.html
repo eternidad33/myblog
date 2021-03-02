@@ -86,34 +86,9 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                            <h6 class="modal-title" id="articleModalLabel">信息完善</h6>
                         </div>
                         <div class="modal-body">
                             <form onsubmit="return false;">
-                                <div class="form-group">
-                                    <div class="col-sm-4">
-                                        <th:block th:if="${null == blog}">
-                                            <img id="blogCoverImage" src="/admin/dist/img/img-upload.png"
-                                                 style="height: 64px;width: 64px;">
-                                        </th:block>
-                                        <th:block th:unless="${null == blog}">
-                                            <img id="blogCoverImage" th:src="${blog.blogCoverImage}"
-                                                 style="width:160px ;height: 120px;display:block;">
-                                        </th:block>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="form-group">
-                                    <div class="col-sm-4">
-                                        <button class="btn btn-info" style="margin-bottom: 5px;" id="uploadCoverImage">
-                                            <i class="fa fa-picture-o"></i>&nbsp;上传封面
-                                        </button>
-                                        <button class="btn btn-secondary" style="margin-bottom: 5px;"
-                                                id="randomCoverImage"><i
-                                                class="fa fa-random"></i>&nbsp;随机封面
-                                        </button>
-                                    </div>
-                                </div>
                                 <div class="form-group">
                                     <label class="control-label">文章状态:&nbsp;</label>
                                     <input name="blogStatus" type="radio" id="publish"

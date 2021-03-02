@@ -130,7 +130,6 @@ public class BlogServiceImpl implements BlogService {
         blogForUpdate.setBlogTitle(blog.getBlogTitle());
         blogForUpdate.setBlogSummary(blog.getBlogSummary());
         blogForUpdate.setBlogContent(blog.getBlogContent());
-        blogForUpdate.setBlogCoverImage(blog.getBlogCoverImage());
         blogForUpdate.setBlogStatus(blog.getBlogStatus());
         blogForUpdate.setEnableComment(blog.getEnableComment());
         BlogCategory blogCategory = categoryMapper.selectByPrimaryKey(blog.getBlogCategoryId());
