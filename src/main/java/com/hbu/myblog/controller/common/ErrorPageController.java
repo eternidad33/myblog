@@ -57,7 +57,6 @@ public class ErrorPageController implements ErrorController {
 
     /**
      * @param request
-     * @return org.springframework.http.ResponseEntity<java.util.Map < java.lang.String, java.lang.Object>>
      */
     @RequestMapping(value = ERROR_PATH)
     @ResponseBody
@@ -67,10 +66,6 @@ public class ErrorPageController implements ErrorController {
         return new ResponseEntity<Map<String, Object>>(body, status);
     }
 
-    /**
-     * @param
-     * @return java.lang.String
-     */
     @Override
     public String getErrorPath() {
         return ERROR_PATH;
@@ -92,7 +87,6 @@ public class ErrorPageController implements ErrorController {
     /**
      * @param request
      * @param includeStackTrace
-     * @return java.util.Map<java.lang.String, java.lang.Object>
      */
     protected Map<String, Object> getErrorAttributes(HttpServletRequest request, boolean includeStackTrace) {
         WebRequest webRequest = new ServletWebRequest(request);

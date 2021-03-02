@@ -24,7 +24,7 @@ public class CommonController {
     /**
      * @param httpServletRequest
      * @param httpServletResponse
-     * @return void
+     * @throws Exception
      */
     @GetMapping("/common/kaptcha")
     public void defaultKaptcha(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
