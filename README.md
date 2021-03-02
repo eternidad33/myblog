@@ -2,7 +2,7 @@
 
 ## 简介
 
-> 本博客系统是在 github 大佬[十三](https://github.com/ZHENFENG13) 写的 [My-Blog-layui](https://github.com/ZHENFENG13/My-Blog-layui) 的基础上进行的微小的改动
+> 本博客系统是在 github 大佬[十三](https://github.com/ZHENFENG13) 写的 [My-Blog-layui](https://github.com/ZHENFENG13/My-Blog) 的基础上进行的微小的改动
 >
 > 用到的技术：**SpringBoot** + **mysql** + **thymleaf** + **mybatis**
 
@@ -63,6 +63,21 @@ D:.
 
 ![](images/数据库设计.jpg)
 
+## 如何使用
+
+1. mysql 导入 sql 文件夹下的 myblog.sql 文件
+
+2. 运行 MyblogApplication.java 的main方法
+
+3. 浏览器访问`http://localhost:8081/`博客前台页面
+
+4. 浏览器访问`http://localhost:8081/admin`为博客后台管理页面
+
+   ```yml
+   用户名: admin
+   密码: 123456
+   ```
+
 ## 运行效果
 
 **启动**
@@ -79,7 +94,7 @@ D:.
 
 **标签**
 
-![标签](images/3.gif)
+![标签](images/标签.jpg)
 
 
 
